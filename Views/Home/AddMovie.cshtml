@@ -1,0 +1,70 @@
+﻿@model Mission06_CalebHanssen.Models.Movie
+
+@{
+    ViewBag.Title = "Add Movie";
+}
+
+<h2 class="text-center">@ViewBag.Title</h2>
+
+<div class="container mt-5">
+    @using (Html.BeginForm("AddMovie", "Home", FormMethod.Post, new { @class = "needs-validation", novalidate = "novalidate" }))
+    {
+        <div class="form-group mb-3">
+            <label for="category">Category</label>
+            @Html.TextBoxFor(model => model.Category, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.Category, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="form-group mb-3">
+            <label for="title">Title</label>
+            @Html.TextBoxFor(model => model.Title, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="form-group mb-3">
+            <label for="year">Year</label>
+            @Html.TextBoxFor(model => model.Year, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.Year, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="form-group mb-3">
+            <label for="director">Director</label>
+            @Html.TextBoxFor(model => model.Director, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.Director, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="form-group mb-3">
+            <label for="rating">Rating</label>
+            @Html.DropDownListFor(model => model.Rating, new SelectList(new List<string> { "G", "PG", "PG-13", "R" }), "Select Rating", new { @class = "form-control" })
+        </div>
+
+        <div class="form-group mb-3">
+            <label for="edited">Edited</label>
+            <div class="form-check">
+                @Html.CheckBoxFor(model => model.Edited, new { @class = "form-check-input" })
+                @Html.LabelFor(model => model.Edited, new { @class = "form-check-label" })
+            </div>
+        </div>
+
+        <div class="form-group mb-3">
+            <label for="lentTo">Lent To</label>
+            @Html.TextBoxFor(model => model.LentTo, new { @class = "form-control" })
+        </div>
+
+        <div class="form-group mb-3">
+            <label for="notes">Notes (max 25 chars)</label>
+            @Html.TextBoxFor(model => model.Notes, new { @class = "form-control", maxlength = "25" })
+        </div>
+
+        <button type="submit" class="btn btn-primary">Add Movie</button>
+    }
+</div>
+
+@section Scripts {
+    <script src="~/path/to/jquery.js"></script>
+    <script src="~/path/to/jquery.validate.js"></script>
+    <script src="~/path/to/jquery.validate.unobtrusive.js"></script>
+}
+
+
+
