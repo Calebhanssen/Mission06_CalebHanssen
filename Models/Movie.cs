@@ -1,33 +1,35 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Mission06_CalebHanssen.Models
 {
     public class Movie
     {
         [Key] // Primary key, if you're using a database
-
         [Required]
-        public string Category { get; set; }
-
-        [Required]
-        [StringLength(100, ErrorMessage = "Title cannot be longer than 100 characters.")]
+        public int MovieId { get; set; }
+      
         public string Title { get; set; }
 
-        [Required]
-        public string Year { get; set; } // Assuming year might include range or special formats
+        public int Year { get; set; } 
 
-        [Required]
-        [StringLength(100, ErrorMessage = "Director name cannot be longer than 100 characters.")]
-        public string Director { get; set; }
+        public string? Director { get; set; }
 
-        [Required]
-        public string Rating { get; set; } // Dropdown values: G, PG, PG-13, R
+        public string? Rating { get; set; } 
 
-        public bool Edited { get; set; } // Nullable for non-required field
+        public int Edited { get; set; } 
 
-        public string LentTo { get; set; } // Not required
+        public string? LentTo { get; set; }
 
-        [StringLength(25, ErrorMessage = "Notes cannot be longer than 25 characters.")]
-        public string Notes { get; set; } // Not required, max 25 chars
+        public int CopiedToPlex { get; set; }
+
+        public string? Notes { get; set; } 
+       
+        
+        [ForeignKey("CategoryId")]
+        public int? CategoryId { get; set; }
+        public Category? Category { get; set; }
+
     }
 }
+ 
